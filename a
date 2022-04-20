@@ -22,7 +22,6 @@ usage_guide() {
     bash <(curl -s https://raw.githubusercontent.com/Aniverse/A/i/a) -f
     wget -qO a https://github.com/Aniverse/A/raw/i/a && bash a -abc
     bash <(wget -qO- https://github.com/Aniverse/A/raw/i/a) -ac
-    s=/usr/local/bin/abench ; rm -f $s ; nano $s ; chmod 755 $s
 }
 
 ########################################################################################################
@@ -85,8 +84,8 @@ mkdir -p $HOME/.abench
 [[ $debug != 1 ]] && clear
 ##############################################################################################################################
 echo -e "${bold}正在获取 check-sys 与 abench ...${normal}"
-[[ $EUID = 0 ]] && wget -qO /usr/local/bin/abench https://github.com/Aniverse/A/raw/i/a && chmod 755 /usr/local/bin/abench
-source <(wget -qO- https://github.com/Aniverse/inexistence/raw/master/00.Installation/check-sys)
+#[[ $EUID = 0 ]] && wget -qO /usr/local/bin/abench https://github.com/Aniverse/A/raw/i/a && chmod 755 /usr/local/bin/abench
+source check-sys
 ##############################################################################################################################
 check_tcp_acc
 echo -e "${bold}正在检查其他硬件信息 ...${normal}" ; hardware_check_1
@@ -105,7 +104,7 @@ disk_used_size=$( calc_disk ${disk_size2[@]} )
 rm -f $HOME/.abench/disk.info
 if [[ $EUID = 0 ]] && [[ "$virtual" == "No Virtualization Detected" ]]; then
     echo -n "${bold}"
-    get_app_static smartctl
+    #get_app_static smartctl
     disk_check_raid
 else
     disk_check_no_root
