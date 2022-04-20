@@ -31,3 +31,7 @@ IOPS test            bash <(wget -qO- git.io/ceshi) -j
 
 如果碰到 `-sh: syntax error near unexpected token ('` 的提示，先输入 `bash`，再执行脚本  
 已知未解决的问题：某些软／硬 RAID 硬盘检测不到  
+
+
+# 放弃&跑路说明
+ZFS会多检测空间，并不会进行ZFS的IO测试
